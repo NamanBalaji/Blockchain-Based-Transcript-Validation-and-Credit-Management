@@ -6,12 +6,13 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "contract-deploy": "truffle.cmd migrate --reset || truffle migrate --reset",
-    "deploy": "truffle.cmd migrate -f 2 --network rinkeby || truffle migrate -f 2 --network rinkeby",
+    "deploy": "truffle.cmd migrate -f 2 --network ropsten || truffle migrate -f 2 --network ropsten",
     "ganache": "ganache-cli -p 8545 &"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@truffle/hdwallet-provider": "^1.2.6",
     "babel-cli": "^6.26.0",
     "babel-core": "^6.26.3",
     "babel-eslint": "^10.1.0",
