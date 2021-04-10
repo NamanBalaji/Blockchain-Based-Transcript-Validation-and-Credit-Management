@@ -1,0 +1,26 @@
+{
+  "name": "server",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "babel-loader": "^8.2.2",
+    "body-parser": "^1.19.0",
+    "chalk": "^4.1.0",
+    "css-loader": "^5.2.1",
+    "dotenv": "^8.2.0",
+    "espress": "0.0.0",
+    "jquery": "^3.6.0",
+    "mongoose": "^5.12.3",
+    "solc": "^0.8.3",
+    "style-loader": "^2.0.0",
+    "truffle-contract": "^4.0.31",
+    "truffle-hdwallet-provider": "^1.0.17",
+    "web3": "^1.3.5"
+  }
+}
