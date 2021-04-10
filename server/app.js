@@ -8,6 +8,8 @@ const PORT = process.env.PORT || 3000;
 mongoose.connect(MONGOURI, {useNewUrlParser: true,useUnifiedTopology: true,useCreateIndex: true, useFindAndModify: false})
 .catch(err => console.log(err));
 
+app.use(express.json())
+
 app.use((req, res, next) => {
     res.header('Access-Control-Allow-Origin', '*');
     next();
@@ -30,7 +32,7 @@ app.use((req, res, next) => {
     Certificates.findById(certificateId)
       .then(obj => {
         obj.verifyData().then(verified => {
-          if (verified) res.status(200).send();
+          if (verified) res.status(200).send({message: "Certificate verified"});
           else res.status(401).send();
         });
       })
