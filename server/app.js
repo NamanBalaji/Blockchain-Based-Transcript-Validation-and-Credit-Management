@@ -3,7 +3,7 @@ const mongoose = require("mongoose");
 const{MONGOURI} = require('./config/keys');
 const Certificates = require("./model/certificate");
 const app = express();
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 5000;
 
 mongoose.connect(MONGOURI, {useNewUrlParser: true,useUnifiedTopology: true,useCreateIndex: true, useFindAndModify: false})
 .catch(err => console.log(err));

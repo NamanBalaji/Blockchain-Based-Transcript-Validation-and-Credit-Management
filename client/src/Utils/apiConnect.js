@@ -12,7 +12,7 @@ const postHeader = {
     }
 };
   
-let host = "http://localhost:3000";
+let host = "http://localhost:5000";
     
 export const getCertificate = certificateId =>
     fetch(`${host}/certificate/data/${certificateId}`, getHeader)

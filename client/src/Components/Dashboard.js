@@ -5,12 +5,12 @@ import Paper from "@material-ui/core/Paper";
 import Typography from "@material-ui/core/Typography";
 import Button from "@material-ui/core/Button";
 import VerifyBadge from "./VerifyBadge";
-import FailureBadge from "./FailureBadge";
+import FailureBadge from "./FaliureBadge";
 import CircularProgress from "@material-ui/core/CircularProgress";
 import Tooltip from "@material-ui/core/Tooltip";
 import HelpIcon from "@material-ui/icons/Help";
 import LockIcon from "@material-ui/icons/Lock";
-import { getCertificate, verifyCertificate } from "../Utils/apiConnect";
+import { getCertificate, verifyCertificate } from "../Utils/apiConnect.js";
 import Loader from "./Loader";
 import Certificate from "./Certificate";
 
@@ -76,7 +76,7 @@ class Dashboard extends React.Component {
       expirationDate: null
     },
     logo:
-      "https://upload.wikimedia.org/wikipedia/commons/thumb/6/62/FOSSASIA_Logo.svg/600px-FOSSASIA_Logo.svg.png"
+      "https://images.static-collegedunia.com/public/college_data/images/logos/1568186580220pxManipalUniversitylogo.png"
   };
 
   verification = () => {

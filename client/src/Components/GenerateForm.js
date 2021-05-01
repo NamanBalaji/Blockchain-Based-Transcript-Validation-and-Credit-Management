@@ -80,8 +80,8 @@ class GenerateForm extends React.Component {
   state = {
     firstname: "",
     lastname: "",
-    organization: "FossAsia",
-    orgLogo: "https://upload.wikimedia.org/wikipedia/commons/thumb/6/62/FOSSASIA_Logo.svg/600px-FOSSASIA_Logo.svg.png",
+    organization: "MUJ",
+    orgLogo: "https://images.static-collegedunia.com/public/college_data/images/logos/1568186580220pxManipalUniversitylogo.png",
     coursename: "",
     assignedOn: null,
     duration: 0,
