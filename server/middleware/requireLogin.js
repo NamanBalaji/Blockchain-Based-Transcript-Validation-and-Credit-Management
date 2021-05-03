@@ -4,7 +4,7 @@ const mongoose = require('mongoose');
 const User = mongoose.model("User");
 module.exports = (req,res,next)=>{
     const {authorization} = req.headers;
-    //authorization === Bearer ewefwegwrherhe
+    //auth token = "bearer followed by a long string of characters"
     if(!authorization){
        return res.status(401).json({error:"you must be logged in"});
     }
