@@ -2,6 +2,7 @@ const express = require("express");
 const mongoose = require("mongoose");
 const{MONGOURI} = require('./config/keys');
 const Certificates = require("./model/certificate");
+const User = require("./model/user");
 const authRoutes = require('./routes/auth');
 const certificateRoutes = require('./routes/certificate');
 const app = express();

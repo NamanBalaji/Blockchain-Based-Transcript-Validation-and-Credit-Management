@@ -3,7 +3,7 @@ const express =  require('express');
 const  router = express.Router();
 const mongoose = require('mongoose');
 const requireLogin = require('../middleware/requireLogin');
-const Post = require('../models/certificate');
+const Certificates = require('../model/certificate');
 
 router.get("/certificate/data/:id", (req, res) => {
     let certificateId = req.params.id;
@@ -32,7 +32,7 @@ router.get("/certificate/verify/:id", (req, res) => {
 });
   
 router.post("/certificate/generate", requireLogin, (req, res) => {
-    const { candidateName, orgName, courseName, assignDate, duration } = req.body;
+    const { candidateName, orgName, courseName, assignDate, duration, email } = req.body;
   
     const given = new Date(assignDate);
   
@@ -46,7 +46,8 @@ router.post("/certificate/generate", requireLogin, (req, res) => {
       courseName,
       expirationDate,
       assignDate,
-      duration
+      duration,
+      email
     });
   
     certificate

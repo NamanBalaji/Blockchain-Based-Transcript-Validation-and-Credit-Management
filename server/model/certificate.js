@@ -34,6 +34,10 @@ const CertificateSchema = new mongoose.Schema({
     type: Number,
     required: true,
     trim: true
+  }, 
+  email: {
+    type: String,
+    required: true,
   }
 });
 
@@ -59,13 +63,15 @@ CertificateSchema.methods.verifyData = function() {
         candidateName: blockData[0],
         orgName: blockData[1],
         courseName: blockData[2],
-        expirationDate: parseInt(blockData[3])
+        expirationDate: parseInt(blockData[3]),
+        email: blockData[4]
       };
       const databaseObject = {
         candidateName: data.candidateName,
         orgName: data.orgName,
         courseName: data.courseName,
-        expirationDate: data.expirationDate
+        expirationDate: data.expirationDate,
+        email: data.email
       };
       if (JSON.stringify(responseObject) === JSON.stringify(databaseObject))
         return true;
@@ -79,7 +85,7 @@ CertificateSchema.methods.verifyData = function() {
 CertificateSchema.methods.appendBlockchain = function() {
   const data = this;
 
-  const { candidateName, orgName, courseName, expirationDate } = data;
+  const { candidateName, orgName, courseName, expirationDate, email } = data;
 
   const certificateId = data._id.toString();
 
@@ -88,7 +94,8 @@ CertificateSchema.methods.appendBlockchain = function() {
     candidateName,
     orgName,
     courseName,
-    expirationDate
+    expirationDate, 
+    email
   );
 };
 
