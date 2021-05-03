@@ -1,6 +1,7 @@
 import React, {useEffect, createContext,useReducer,useContext} from 'react';
 import {BrowserRouter,Route,Switch,useHistory} from 'react-router-dom';
 import Navbar from './Components/Navbar';
+import Signup from './Components/Signup';
 import {reducer, initialState} from './Reducers/userReducer';
 
 
@@ -17,11 +18,13 @@ const Routing = ()=>{
    		else{
       		history.push('/login')
    		}
-  	},[])
+  	})
 
   return(
   	<Switch>
-   
+		<Route path="/signup">
+      		<Signup />
+   		</Route>
 	</Switch>
  )
 }

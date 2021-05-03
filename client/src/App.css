@@ -1,0 +1,67 @@
+@import url('https://fonts.googleapis.com/css2?family=Indie+Flower&display=swap');
+
+a{
+  color: white !important;
+}
+
+.brand-logo, h2{
+  font-family: 'Indie Flower', cursive;
+}
+
+.auth-card{
+  padding: 20px;
+  text-align: center;
+  max-width: 400px;
+  margin: 10px auto;
+  color: white;
+  background-color: #00796b;
+  height: 50%;
+}
+.mycard{
+  margin-top: 30px;
+}
+.post-card{
+  padding: 20px;
+  text-align: center;
+  max-width: 400px;
+  margin: 10px auto;
+  color: white;
+  background-color: #00796b;
+}
+
+.gallery{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+.item{
+  width: 30%;
+  margin-bottom: 3%;
+}
+
+.home{
+  margin:30px auto;
+  max-width:55%;
+  padding:20px;
+  
+}
+.home-card{
+  max-width: 80%;
+  height: max-content;
+  margin: 26px auto 26px auto;
+}
+
+.home-card h5{
+  height: 20%;
+}
+.card-image{
+  height: 60%;
+}
+.material-icons:hover{
+  cursor: pointer;
+}
+
+.collection-item{
+  width: 100%;
+}
