@@ -32,8 +32,8 @@ router.get("/certificate/verify/:id", (req, res) => {
 });
   
 router.post("/certificate/generate", requireLogin, (req, res) => {
-    const { candidateName, orgName, courseName, assignDate, duration, email } = req.body;
-  
+    const { candidateName, courseName, assignDate, duration, email } = req.body;
+    const orgName = req.user.name;
     const given = new Date(assignDate);
   
     let expirationDate = given.setFullYear(given.getFullYear() + duration);
@@ -72,5 +72,15 @@ router.post("/certificate/generate", requireLogin, (req, res) => {
         res.status(400).send(err);
       });
 });
+
+router.post("/certificate/get/all", requireLogin, (req, res)=>{
+    Certificates.find({email: req.user.email})
+    .then(myCertificates =>{
+        res.json({myCertificates})
+    })
+    .catch(err=>{
+        console.log(err);
+    })
+})
 
 module.exports = router;
