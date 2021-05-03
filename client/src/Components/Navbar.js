@@ -39,7 +39,7 @@ const Navbar = ()=>{
     return(
     <nav>
         <div className="nav-wrapper teal darken-2">
-            <Link to={state?"/":"/login"} className="brand-logo left">OCVCM</Link>
+            <Link to="/" className="brand-logo left">OCVCM</Link>
                 <ul id="nav-mobile" className="right ">
                     {renderList()}
                 </ul>
