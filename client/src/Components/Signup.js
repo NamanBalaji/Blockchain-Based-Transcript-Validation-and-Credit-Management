@@ -5,6 +5,7 @@ import M from 'materialize-css';
 const Signup = ()=>{
   const history  = useHistory();
   const [name, setName] = useState("")
+  const [category, setCategory] = useState("")
   const [password, setPassword] = useState("")
   const [email, setEmail] = useState("")
   
@@ -19,6 +20,7 @@ const Signup = ()=>{
         name,
         password,
         email,
+        category
       })
     }).then(res=>res.json())
     .then(data=>{
@@ -37,11 +39,12 @@ const Signup = ()=>{
   }
 
    return(
-    <div className="mycard">
-    <div className="home-card">
+    <div className="mycard container">
+    <div className="card auth-card">
       <h2>OCVCM</h2>
       <input type='text' placeholder='Name' onChange={(e)=>{setName(e.target.value)}}/>
       <input type='email' placeholder='Email' onChange={(e)=>{setEmail(e.target.value)}}/>
+      <input type='text' placeholder='organization/student' onChange={(e)=>{setCategory(e.target.value)}}/>
       <input type='password' placeholder='Password' onChange={(e)=>{setPassword(e.target.value)}}/>
       <button className="btn waves-effect waves-light grey darken-4" onClick={()=>postData()}>Signup</button>
       <h6>

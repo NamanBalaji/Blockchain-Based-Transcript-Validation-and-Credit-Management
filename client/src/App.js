@@ -2,6 +2,7 @@ import React, {useEffect, createContext,useReducer,useContext} from 'react';
 import {BrowserRouter,Route,Switch,useHistory} from 'react-router-dom';
 import Navbar from './Components/Navbar';
 import Signup from './Components/Signup';
+import Login from './Components/Login';
 import {reducer, initialState} from './Reducers/userReducer';
 
 
@@ -18,12 +19,15 @@ const Routing = ()=>{
    		else{
       		history.push('/login')
    		}
-  	})
+  	},[dispatch, history, state])
 
   return(
   	<Switch>
 		<Route path="/signup">
       		<Signup />
+   		</Route>
+		<Route path="/login">
+      		<Login />
    		</Route>
 	</Switch>
  )
