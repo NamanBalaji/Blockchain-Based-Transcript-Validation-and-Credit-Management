@@ -45,25 +45,29 @@ const getAccounts = function() {
     candidateName,
     orgName,
     courseName,
-    expirationDate
+    expirationDate, 
+    email
   ) {
     const self = this;
-  
+    //console.log(self)
     // Bootstrap the CertificationInstance abstraction for Use.
     CertificationInstance.setProvider(self.web3.currentProvider);
   
     return self.getAccounts().then(answer => {
       let accountAddress = answer[0];
       return CertificationInstance.deployed()
-        .then(instance =>
+        .then(instance =>{
+          //console.log(instance);
           instance.generateCertificate(
             id,
             candidateName,
             orgName,
             courseName,
             expirationDate,
-            { from: accountAddress.toLowerCase(), gas: 200000 }
+            email,
+            { from: accountAddress.toLowerCase(), gas: 200000 },
           )
+        }
         )
         .catch(err => {
           log.Error(err);

@@ -23,7 +23,7 @@ router.get("/certificate/verify/:id", (req, res) => {
       .then(obj => {
         obj.verifyData().then(verified => {
           if (verified) res.status(200).send({message: "Certificate verified"});
-          else res.status(401).send();
+          else res.status(401).send({err: "This is not a valid certificate"});
         });
       })
       .catch(err =>
@@ -53,10 +53,12 @@ router.post("/certificate/generate", requireLogin, (req, res) => {
     certificate
       .save()
       .then(obj => {
+        console.log(obj)
         const dbRes = obj.toJSON();
         obj
           .appendBlockchain()
           .then(data => {
+            console.log(`data: ${data}`)
             const { transactionHash, blockHash } = data.receipt;
             res.status(201).send({
               receipt: {

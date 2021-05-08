@@ -1,9 +1,9 @@
 import React, {useState,} from 'react';
-//import {useHistory} from 'react-router-dom';
+import {useHistory} from 'react-router-dom';
 import M from 'materialize-css';
 
 const Generate = ()=>{
-    //const history = useHistory();
+    const history = useHistory();
 
     const [certificateId, setCertificateId] = useState("");
     const [firstName, setFirstName] = useState("");
@@ -24,8 +24,8 @@ const Generate = ()=>{
             body: JSON.stringify({
                 candidateName: `${firstName} ${lastName}`, 
                 courseName: courseName, 
-                assignDate:  new Date().getTime(), 
-                duration: parseInt(duration), 
+                assignDate:  parseInt(new Date().getTime()), 
+                duration: duration, 
                 email: email, 
                 orgName: localStorage.getItem("name")
             })
@@ -37,13 +37,15 @@ const Generate = ()=>{
                     M.toast({html: data.err})
                 }
                 else {
-                    setCertificateId(data.data.certificateId);
-                    M.toast({
-                        html: `Certificate ID: ${certificateId}
-                        Transaction Hash: ${data.receipt.transactionHash}
-                        Bock Hash: ${data.receipt.blockHash}`
-                    });
+                    console.log(data)
+                    //setCertificateId(data.data.certificateId);
+                    // M.toast({
+                    //     html: `Certificate ID: ${certificateId}
+                    //     Transaction Hash: ${data.receipt.transactionHash}
+                    //     Bock Hash: ${data.receipt.blockHash}`
+                    // });
                     console.log(data);
+                    history.push('/')
                 }
             }
         )

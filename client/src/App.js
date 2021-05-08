@@ -4,6 +4,7 @@ import Navbar from './Components/Navbar';
 import Signup from './Components/Signup';
 import Login from './Components/Login';
 import Generate from './Components/Generate';
+import Certificate from './Components/Certificate';
 import {reducer, initialState} from './Reducers/userReducer';
 
 
@@ -12,15 +13,19 @@ export const UserContext = createContext()
 const Routing = ()=>{
 	const history = useHistory()
   	const {state,dispatch} = useContext(UserContext)
+	  let path = window.location.pathname
+	  console.log(path.substring(0,14))
   	useEffect(()=>{
     	const user = JSON.parse(localStorage.getItem("user"))
-   		if(user){
-      		dispatch({type:"USER",payload:user})
-   		}
-   		else{
-      		history.push('/login')
-   		}
-  	},[])
+		if (path.substring(0,13)!=="/certificate/"){
+			if(user){
+				dispatch({type:"USER",payload:user})
+			 }
+			 else{
+				history.push('/login')
+			 }
+		}
+  	},[dispatch, history, path])
 
   return(
   	<Switch>
@@ -32,6 +37,9 @@ const Routing = ()=>{
    		</Route>
 		<Route path="/issueCertificate">
       		<Generate />
+   		</Route>
+		<Route path="/certificate/:id">
+      		<Certificate />
    		</Route>
 	</Switch>
  )

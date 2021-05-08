@@ -38,6 +38,7 @@ const CertificateSchema = new mongoose.Schema({
   email: {
     type: String,
     required: true,
+    trim: true
   }
 });
 
@@ -59,6 +60,7 @@ CertificateSchema.methods.verifyData = function() {
   return truffle_connect
     .getCertificateData(certificateId)
     .then(blockData => {
+      console.log(blockData)
       const responseObject = {
         candidateName: blockData[0],
         orgName: blockData[1],
