@@ -3,6 +3,7 @@ import {BrowserRouter,Route,Switch,useHistory} from 'react-router-dom';
 import Navbar from './Components/Navbar';
 import Signup from './Components/Signup';
 import Login from './Components/Login';
+import Generate from './Components/Generate';
 import {reducer, initialState} from './Reducers/userReducer';
 
 
@@ -19,7 +20,7 @@ const Routing = ()=>{
    		else{
       		history.push('/login')
    		}
-  	},[dispatch, history, state])
+  	},[])
 
   return(
   	<Switch>
@@ -28,6 +29,9 @@ const Routing = ()=>{
    		</Route>
 		<Route path="/login">
       		<Login />
+   		</Route>
+		<Route path="/issueCertificate">
+      		<Generate />
    		</Route>
 	</Switch>
  )

@@ -27,6 +27,7 @@ const Login = ()=>{
         localStorage.setItem("jwt",data.token);
         localStorage.setItem("user",JSON.stringify(data.user))
         localStorage.setItem("category", data.user.category)
+        localStorage.setItem("name", data.user.name)
         console.log(localStorage.getItem("category"))
         dispatch({type:"USER",payload:data.user})
         M.toast({html: "Logged in successfully"})
