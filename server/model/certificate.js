@@ -60,20 +60,17 @@ CertificateSchema.methods.verifyData = function() {
   return truffle_connect
     .getCertificateData(certificateId)
     .then(blockData => {
-      console.log(blockData)
       const responseObject = {
         candidateName: blockData[0],
         orgName: blockData[1],
         courseName: blockData[2],
-        expirationDate: parseInt(blockData[3]),
-        email: blockData[4]
+        expirationDate: parseInt(blockData[3])
       };
       const databaseObject = {
         candidateName: data.candidateName,
         orgName: data.orgName,
         courseName: data.courseName,
-        expirationDate: data.expirationDate,
-        email: data.email
+        expirationDate: data.expirationDate
       };
       if (JSON.stringify(responseObject) === JSON.stringify(databaseObject))
         return true;
@@ -87,7 +84,7 @@ CertificateSchema.methods.verifyData = function() {
 CertificateSchema.methods.appendBlockchain = function() {
   const data = this;
 
-  const { candidateName, orgName, courseName, expirationDate, email } = data;
+  const { candidateName, orgName, courseName, expirationDate } = data;
 
   const certificateId = data._id.toString();
 
@@ -96,8 +93,7 @@ CertificateSchema.methods.appendBlockchain = function() {
     candidateName,
     orgName,
     courseName,
-    expirationDate, 
-    email
+    expirationDate
   );
 };
 

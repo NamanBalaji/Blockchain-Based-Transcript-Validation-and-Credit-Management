@@ -24,57 +24,53 @@ const connectWeb3 = function() {
 }
 
 const getAccounts = function() {
-    const self = this;
-  
-    return self.web3.eth.getAccounts();
-  };
-  
-  const getCertificateData = function(certificateId) {
-    const self = this;
-  
-    // Bootstrap the CertificationInstance abstraction for Use.
-    CertificationInstance.setProvider(self.web3.currentProvider);
-  
+  const self = this;
+
+  return self.web3.eth.getAccounts();
+};
+
+const getCertificateData = function(certificateId) {
+  const self = this;
+
+  // Bootstrap the CertificationInstance abstraction for Use.
+  CertificationInstance.setProvider(self.web3.currentProvider);
+
+  return CertificationInstance.deployed()
+    .then(ins => ins.getData(certificateId))
+    .catch(err => Promise.reject("No certificate found with the input id"));
+};
+
+const generateCertificate = function(
+  id,
+  candidateName,
+  orgName,
+  courseName,
+  expirationDate
+) {
+  const self = this;
+
+  // Bootstrap the CertificationInstance abstraction for Use.
+  CertificationInstance.setProvider(self.web3.currentProvider);
+
+  return self.getAccounts().then(answer => {
+    let accountAddress = answer[0];
     return CertificationInstance.deployed()
-      .then(ins => ins.getData(certificateId))
-      .catch(err => Promise.reject("No certificate found with the input id"));
-  };
-  
-  const generateCertificate = function(
-    id,
-    candidateName,
-    orgName,
-    courseName,
-    expirationDate, 
-    email
-  ) {
-    const self = this;
-    //console.log(self)
-    // Bootstrap the CertificationInstance abstraction for Use.
-    CertificationInstance.setProvider(self.web3.currentProvider);
-  
-    return self.getAccounts().then(answer => {
-      let accountAddress = answer[0];
-      return CertificationInstance.deployed()
-        .then(instance =>{
-          //console.log(instance);
-          instance.generateCertificate(
-            id,
-            candidateName,
-            orgName,
-            courseName,
-            expirationDate,
-            email,
-            { from: accountAddress.toLowerCase(), gas: 200000 },
-          )
-        }
+      .then(instance =>
+        instance.generateCertificate(
+          id,
+          candidateName,
+          orgName,
+          courseName,
+          expirationDate,
+          { from: accountAddress.toLowerCase(), gas: 200000 }
         )
-        .catch(err => {
-          log.Error(err);
-          return Promise.reject(err.toString());
-        });
-    });
-  };
+      )
+      .catch(err => {
+        log.Error(err);
+        return Promise.reject(err.toString());
+      });
+  });
+};
   
   module.exports = {
     connectWeb3,

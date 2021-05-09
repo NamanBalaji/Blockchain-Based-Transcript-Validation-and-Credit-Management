@@ -25,9 +25,8 @@ const Navbar = ()=>{
           }
           else{
             return [
-                <li key="4"><Link to="/">Home</Link></li>,
-                <li key="5"><Link to="/issueCertificate">Issue Certificate</Link></li>,
-                <li  key="6">
+                <li key="4"><Link to="/issueCertificate">Issue Certificate</Link></li>,
+                <li  key="5">
                     <button className="btn waves-effect waves-light grey darken-4"
                      onClick={()=>{
                         
@@ -40,8 +39,8 @@ const Navbar = ()=>{
     }
     else{
        return(
-         [<li  key="7"><Link to="/login">LogIn</Link></li>,
-         <li  key="8"><Link to="/signup">SignUp</Link></li>]
+         [<li  key="6"><Link to="/login">LogIn</Link></li>,
+         <li  key="7"><Link to="/signup">SignUp</Link></li>]
        );
     }
   }

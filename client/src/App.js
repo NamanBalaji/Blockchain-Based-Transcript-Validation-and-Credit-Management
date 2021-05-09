@@ -5,6 +5,8 @@ import Signup from './Components/Signup';
 import Login from './Components/Login';
 import Generate from './Components/Generate';
 import Certificate from './Components/Certificate';
+import Dashboard from './Components/Dashboard';
+import Home from './Components/Home';
 import {reducer, initialState} from './Reducers/userReducer';
 
 
@@ -29,6 +31,7 @@ const Routing = ()=>{
 
   return(
   	<Switch>
+	  	
 		<Route path="/signup">
       		<Signup />
    		</Route>
@@ -41,7 +44,14 @@ const Routing = ()=>{
 		<Route path="/certificate/:id">
       		<Certificate />
    		</Route>
+		<Route path="/myCertificates">
+			<Dashboard />
+		</Route>
+		<Route exact path="/">
+			  <Home />
+		  </Route>
 	</Switch>
+	
  )
 }
 

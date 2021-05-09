@@ -2,14 +2,13 @@
 pragma solidity >=0.4.22 <0.9.0;
 
 contract Certification {
-    
+    constructor() public {}
 
     struct Certificate {
         string candidate_name;
         string org_name;
         string course_name;
         uint256 expiration_date;
-        string email;
     }
 
     mapping(bytes32 => Certificate) public certificates;
@@ -31,18 +30,17 @@ contract Certification {
         string memory _candidate_name,
         string memory _org_name, 
         string memory _course_name, 
-        uint256 _expiration_date,
-        string memory _email) public {
+        uint256 _expiration_date) public {
         bytes32 byte_id = stringToBytes32(_id);
         require(certificates[byte_id].expiration_date == 0, "Certificate with given id already exists");
-        certificates[byte_id] = Certificate(_candidate_name, _org_name, _course_name, _expiration_date, _email);
+        certificates[byte_id] = Certificate(_candidate_name, _org_name, _course_name, _expiration_date);
         emit certificateGenerated(byte_id);
     }
 
-    function getData(string memory _id) public view returns(string memory, string memory, string memory, uint256, string memory) {
+    function getData(string memory _id) public view returns(string memory, string memory, string memory, uint256) {
         bytes32 byte_id = stringToBytes32(_id);
         Certificate memory temp = certificates[byte_id];
         require(temp.expiration_date != 0, "No data exists");
-        return (temp.candidate_name, temp.org_name, temp.course_name, temp.expiration_date, temp.email);
+        return (temp.candidate_name, temp.org_name, temp.course_name, temp.expiration_date);
     }
 }

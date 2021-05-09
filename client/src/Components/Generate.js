@@ -5,7 +5,6 @@ import M from 'materialize-css';
 const Generate = ()=>{
     const history = useHistory();
 
-    const [certificateId, setCertificateId] = useState("");
     const [firstName, setFirstName] = useState("");
     const [lastName, setLastName] = useState("");
     const [duration, setDuration] = useState(0);
@@ -38,12 +37,11 @@ const Generate = ()=>{
                 }
                 else {
                     console.log(data)
-                    //setCertificateId(data.data.certificateId);
-                    // M.toast({
-                    //     html: `Certificate ID: ${certificateId}
-                    //     Transaction Hash: ${data.receipt.transactionHash}
-                    //     Bock Hash: ${data.receipt.blockHash}`
-                    // });
+                    M.toast({
+                        html: `Certificate ID: ${data.data.certificateId}
+                        Transaction Hash: ${data.receipt.transactionHash}
+                        Bock Hash: ${data.receipt.blockHash}`
+                    });
                     console.log(data);
                     history.push('/')
                 }
